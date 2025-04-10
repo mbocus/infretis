@@ -119,7 +119,7 @@ while True:
                 traj.write(atoms, forces=forces, energy=energy, stress=stress)
                 system.pos = atoms.positions
                 system.vel = atoms.get_velocities()
-                system.box = atoms.cell.diagonal()
+                system.box = atoms.get_cell()[:]
                 order = order_function.calculate(system)
                 msg_file.write(
                     f'{step_nr} {" ".join([str(j) for j in order])}'

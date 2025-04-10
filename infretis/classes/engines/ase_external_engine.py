@@ -130,7 +130,7 @@ class ASEExternalEngine(EngineBase):
         return (
             atoms.positions,
             atoms.get_velocities(),
-            atoms.cell.diagonal(),
+            atoms.get_cell()[:],
             None,
         )
 
@@ -160,7 +160,7 @@ class ASEExternalEngine(EngineBase):
             system,
             xyz=atoms.positions,
             vel=atoms.get_velocities(),
-            box=atoms.cell.diagonal(),
+            box=atoms.get_cell()[:],
         )
 
         msg_file.write(
